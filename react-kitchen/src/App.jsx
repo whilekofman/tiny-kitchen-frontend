@@ -1,14 +1,47 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import {Orders} from './components/Orders.jsx'
+import Orders from './components/Orders.jsx'
 import './App.css'
 import OrderForm from './components/OrderForm'
 
+// import CompleteOrders from './components/orders.jsx'
+
 function App() {
   const [count, setCount] = useState(0)
+  const [ordersState, setOrdersState] = useState({
+    completeOrders: {
+      1: {
+        id: 1,
+        name: "Mark",
+        address: "12345",
+        items: "Pizza",
+        isComplete: true
+      }
+    },
+    incompleteOrders: {
+      2: {
+        id: 2,
+        name: "Kenny",
+        address: "6789",
+        items: "not pizza",
+        isComplete: false
+      }
+    }
+  })
+
+  const completeToggle = id => {
+      setOrdersState(orderState => {
+        orderState.completeOrders.append(incompleteOrders.id)
+        orderState.incompleteOrders.delete(id)
+      })
+  }
 
   return (
     <div className="App">
+      INCOMPLETE:
+      <Orders orders={Object.values(ordersState.incompleteOrders)}/>
+      Complete:
+      <Orders orders={Object.values(ordersState.completeOrders)}/>
       <OrderForm />
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">

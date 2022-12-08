@@ -1,9 +1,9 @@
 import React from "react"
 import { Order } from "./Order.jsx";
 
-export const Orders = orders => {
-    
-    const ordersList = orders.map(order => <Order key={order.id} order={order} />)
+const Orders = ({orders}, toggleComplete) => {
+    // debugger
+    const ordersList = orders.map(order => <Order order={order} key={order.id} toggleComplete/>)
     
     return ( 
         <div className="orders-list">
@@ -12,4 +12,4 @@ export const Orders = orders => {
      );
 }
  
-// export default Orders;
+export default Orders;
