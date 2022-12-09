@@ -1,13 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import Orders from './components/Orders.jsx'
 import './App.css'
 import OrderForm from './components/OrderForm'
+// import { useEffect } from 'react'
 
 // import CompleteOrders from './components/orders.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [outstandingOrders, setOutStandingOrders] = useState(true)
   const [ordersState, setOrdersState] = useState({
     completeOrders: {
       1: {
@@ -27,7 +29,13 @@ function App() {
         isComplete: false
       }
     }
+    // ,
+    // outstandingOrders: Object.keys(this.incompleteOrders).length
   })
+  useEffect(() => {
+    // console.log(Object.keys(ordersState.incompleteOrders).length)
+    if (Object.keys(ordersState.incompleteOrders).length) console.log(true)
+  }, [ordersState])
 
   const completeToggle = id => {
       setOrdersState(orderState => {
@@ -38,9 +46,9 @@ function App() {
 
   return (
     <div className="App">
-      INCOMPLETE:
+      INCOMPLETE ORDERS:
       <Orders orders={Object.values(ordersState.incompleteOrders)}/>
-      Complete:
+      COMPLETE ORDERS:
       <Orders orders={Object.values(ordersState.completeOrders)}/>
       <OrderForm />
       {/* <div>

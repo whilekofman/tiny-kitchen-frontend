@@ -1,5 +1,5 @@
 import React from "react";
-export const Order = ({ order, toggleComplete }) => {
+export const Order = ({ order  }) => {
     const handleCompletion = e => {
         e.preventDefault()
         console.log('click')
@@ -12,7 +12,6 @@ export const Order = ({ order, toggleComplete }) => {
             <span className="items">{order.items}</span>
             {!order.isComplete && (
             <button className="isComplete" onClick={handleCompletion}>Complete?</button>)}
-
 
         </div>
      );
