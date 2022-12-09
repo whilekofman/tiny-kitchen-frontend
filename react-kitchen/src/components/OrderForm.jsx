@@ -1,5 +1,8 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { useRef } from "react";
+import { orderContext } from "../App";
+import { OrderContext } from "./OrderContext";
+
 
 const OrderForm = () => {
 
@@ -8,6 +11,8 @@ const OrderForm = () => {
     const  itemsInput = useRef();
     const isCompleteInput = useRef();
 
+    const { addOrder } = useContext(OrderContext)
+    
     const formSubmission = useCallback(e => {
         e.preventDefault()
         const formData = {
@@ -16,7 +21,7 @@ const OrderForm = () => {
             items: itemsInput.current?.value,
 
         };
-        console.log(formData)
+        console.log({orders})
     }, [])
 
     return ( 

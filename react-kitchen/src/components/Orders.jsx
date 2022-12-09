@@ -1,13 +1,48 @@
-import React from "react"
+import React, {useContext, useEffect} from "react"
 import { Order } from "./Order.jsx";
+import { OrderContext } from "./OrderContext.jsx";
 
-const Orders = ({orders}, toggleComplete) => {
+const Orders = ( ) => {
     // debugger
-    const ordersList = orders.map(order => <Order order={order} key={order.id} toggleComplete/>)
+    const { ordersState, completeOrder, setOutStandingOrders } = useContext(OrderContext)
     
+    useEffect(() => {
+        if (!incompleteOrders.length) {
+            setOutStandingOrders(false)
+            
+        }
+
+    }, [ordersState])
+    // useEffect = (() => {
+    //     // if (!incompleteOrders.length) {
+    //         console.log("help")
+    //     // }
+    // }, [ordersState])
+
+    // const ordersList = orders.map(order => <Order order={order} key={order.id} toggleComplete/>)
+    const incompleteOrders = Object.values(ordersState.incompleteOrders)
+    const completeOrders = Object.values(ordersState.completeOrders)
+    // console.log(incompleteOrders)
+    const incompleteOrdersList = incompleteOrders.map(order => <Order order={order} key={order.id} completeOrder={completeOrder}/>)
+    const completeOrdersList = completeOrders.map(order => <Order order={order} key={order.id} />)
+
+    // console.log(ordersState)
+
     return ( 
         <div className="orders-list">
-            {ordersList}
+            {/* {ordersList} */}
+            
+            <div className="status-text">Incomplete Orders:</div>
+            <div className="incompleteOrder">
+                {incompleteOrdersList}
+            </div>
+            <div className="status-text">Complete Orders:</div>
+            <div className="order">
+                {completeOrdersList}
+            </div>
+
+
+            {/* {completeOrdersList} */}
         </div>
      );
 }
