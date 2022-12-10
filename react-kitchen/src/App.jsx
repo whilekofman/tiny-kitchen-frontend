@@ -15,20 +15,19 @@ function App() {
 
   return (
     <div className="App">
-      {/* <div className="background-change"> */}
         <OrderContextProvidor>
           
-          <Orders /> {/* orders={Object.values(ordersState.incompleteOrders)}/> */}
-          {/* COMPLETE ORDERS: */}
-          {/* <Orders orders={Object.values(ordersState.completeOrders)}/> */}
-          {/* <Orders /> */}
+          <Orders />
           <OrderForm />
 
         </OrderContextProvidor>
-      {/* </div> */}
 
     </div>
   )
 }
 
 export default App
+//  {/* orders={Object.values(ordersState.incompleteOrders)}/> */}
+//           {/* COMPLETE ORDERS: */}
+//           {/* <Orders orders={Object.values(ordersState.completeOrders)}/> */}
+//           {/* <Orders /> */}

@@ -16,16 +16,8 @@ const Orders = ( ) => {
 
     }, [ordersState])
 
-    useEffect(() => {
-        dispatch(fetchOrders())
-    }, [])
-    // useEffect = (() => {
-    //     // if (!incompleteOrders.length) {
-    //         console.log("help")
-    //     // }
-    // }, [ordersState])
 
-    // const ordersList = orders.map(order => <Order order={order} key={order.id} toggleComplete/>)
+
     const incompleteOrders = Object.values(ordersState.incompleteOrders)
     const completeOrders = Object.values(ordersState.completeOrders)
     // console.log(incompleteOrders)
@@ -54,3 +46,7 @@ const Orders = ( ) => {
 }
  
 export default Orders;
+
+    // useEffect(() => {
+    //     dispatch(fetchOrders())
+    // }, [])
