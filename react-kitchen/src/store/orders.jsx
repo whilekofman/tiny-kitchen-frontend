@@ -2,7 +2,7 @@ const RECEIVE_ORDERS = 'orders/RECEIVE_ORDERS'
 const RECEIVE_ORDER = 'order/RECEIVE_ORDER'
 const REMOVE_ORDER = 'orderId/DELETE_ORDER'
 
-const receiveOrders = () => ({
+const receiveOrders = orders => ({
     type: RECEIVE_ORDERS,
     orders
 })
@@ -22,8 +22,9 @@ export const getOrder = orderId => ({ orders } ) => orders ? orders[orderId] : n
 
 export const fetchOrders = async dispatch => {
     const res = await fetch('api/orders')
-    const data = await res.json()
-    dispatch(receiveOrders(data))
+    // const data = await res.json()
+    debugger
+    dispatch(receiveOrders(res.data))
 
 }
 

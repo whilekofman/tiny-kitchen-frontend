@@ -1,11 +1,13 @@
 import React, {useContext, useEffect} from "react"
+import { useDispatch } from "react-redux";
+import { fetchOrders } from "../store/orders.jsx";
 import { Order } from "./Order.jsx";
 import { OrderContext } from "./OrderContext.jsx";
 
 const Orders = ( ) => {
     // debugger
     const { ordersState, completeOrder, setOutStandingOrders } = useContext(OrderContext)
-    
+    const dispatch = useDispatch()
     useEffect(() => {
         if (!incompleteOrders.length) {
             setOutStandingOrders(false)
@@ -13,6 +15,10 @@ const Orders = ( ) => {
         }
 
     }, [ordersState])
+
+    useEffect(() => {
+        dispatch(fetchOrders())
+    }, [])
     // useEffect = (() => {
     //     // if (!incompleteOrders.length) {
     //         console.log("help")
