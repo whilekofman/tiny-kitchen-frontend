@@ -10,6 +10,7 @@ export const Order = ({ order, completeOrder }) => {
 
 
     }
+    // tiny kitchen fetch
     //     setOrdersState(orderState => {
     //         orderState.completeOrders.append(incompleteOrders.id)
     //         orderState.incompleteOrders.delete(id)
